@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>🦋 Tiwaloluwa · One of a Kind · Pink Perfection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1"></script>
+    <link rel="stylesheet" href="deep.css">
+</head>
+<body>
+
+<div class="butterfly-bg" id="butterflyBg"></div>
+
+<div class="birthday-container">
+    <div class="hero">
+        <h1>🎀 Happy Birthday, <span>Tiwaloluwa</span> 🎀</h1>
+        <p>✦ one of a kind · calm strength · radiant smile ✦</p>
+        <div class="perfection-badge">
+            🦋 “You are good just the way you are – beautiful can’t describe what I see.” 🦋
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="greeting-message">
+            <h3>
+                🦋🌸✨<i> Happy birthday to you, Tiwaloluwa!</i> ✨🌸🦋
+            </h3>
+            <div style="margin-top: 0.8rem; font-size: 0.9rem; color: #bc6f89;">
+                Your smile is sunshine, your calm is art, your soul is unmatched.
+            </div>
+        </div>
+
+        <div class="wish-display-card" id="wishCard">
+            <div class="wish-text" id="dynamicWishMessage">
+                💗🦋 Click any button — each opens a wish made for YOU.<br>
+                One of a kind. Beautiful inside out. Perfect in your own unique way.
+            </div>
+            <div class="butterfly-icon-small">🦋✨🦋</div>
+        </div>
+
+        <div class="wishes-buttons">
+            <button class="btn-wish" data-wish-idx="0"><span>🦋</span> Pure Perfection</button>
+            <button class="btn-wish" data-wish-idx="1"><span>✨</span> Master of Her Craft</button>
+            <button class="btn-wish" data-wish-idx="2"><span>🌸</span> Calm & Smile</button>
+            <button class="btn-wish" data-wish-idx="3"><span>💖</span> One of a Kind</button>
+            <button class="btn-wish" data-wish-idx="4"><span>🌟</span> Beyond Beautiful</button>
+            <button class="btn-wish" data-wish-idx="5"><span>🎀</span> You are good as you are</button>
+        </div>
+
+        <div class="signature">
+            <span>🎀 uniquely Tiwaloluwa · calm spirit · perfect heart 🎀</span>
+            <span>🦋 your smile makes the world better 🦋</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ----- enriched wishes including: one of a kind, beautiful smile, calm, and the special quote -----
+    const wishesCollection = [
+        {
+            title: "🦋 The Perfection You Carry",
+            message: "Tiwaloluwa, you don’t just chase perfection — you redefine it. In everything you do, you leave a mark of excellence. But what makes you truly one of a kind is the calm grace you bring into every room. Happy birthday, beautiful soul. Keep shining."
+        },
+        {
+            title: "✨ Excellence & Serenity",
+            message: "You are so good at what you do, and yet you remain humble, calm, and deeply focused. Your smile is like a quiet sunrise — warm, peaceful, unforgettable. May your birthday reflect all the beauty you pour into this world."
+        },
+        {
+            title: "🌸 Calm Like the Ocean, Bright Like Stars",
+            message: "There’s something about you, Tiwaloluwa: a stillness that feels like home, a smile that lifts every heart. You are rare, gentle, and powerful at the same time. Never change the unique way you glow. Happy birthday, lovely."
+        },
+        {
+            title: "💖 One of a Kind — No Replica",
+            message: "In a world full of copies, you are the original. Your soul carries a blend of fire and softness, perfection and kindness. No one else laughs like you, dreams like you, or brightens a room like you do. Celebrate your one-of-a-kind spirit today!"
+        },
+        {
+            title: "🌟 Beyond ‘Beautiful’",
+            message: "I will not say you are beautiful — I rather say you are good just the way you are. Because beautiful alone cannot describe what I see when I look at you. I see integrity, passion, a calm ocean, and a smile that heals. Tiwaloluwa, you are pure magic."
+        },
+        {
+            title: "🎀 You Are Good Just As You Are",
+            message: "Happy birthday, Tiwaloluwa. Let this day remind you: you don’t need to be anything other than yourself. Your calm nature, your devoted heart, your pursuit of perfection — they all make you whole. And yes, that smile? It’s the most beautiful thing in the universe. I won’t call you beautiful; I’ll call you extraordinary, just the way you are. 💗"
+        }
+    ];
+
+    const dynamicMsgDiv = document.getElementById('dynamicWishMessage');
+    const wishCardDiv = document.getElementById('wishCard');
+    const allButtons = document.querySelectorAll('.btn-wish');
+
+    function launchPinkConfetti() {
+        canvasConfetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 },
+            startVelocity: 16,
+            colors: ['#ffb7c5', '#ff8da1', '#ffd966', '#f7a1c4', '#ffb3c6'],
+            decay: 0.9,
+            ticks: 200
+        });
+        setTimeout(() => {
+            canvasConfetti({
+                particleCount: 50,
+                angle: 60,
+                spread: 50,
+                origin: { x: 0, y: 0.7 },
+                colors: ['#ff9eb5', '#ffc0cb']
+            });
+            canvasConfetti({
+                particleCount: 50,
+                angle: 120,
+                spread: 50,
+                origin: { x: 1, y: 0.7 },
+                colors: ['#ff9eb5', '#f5a3c7']
+            });
+        }, 100);
+    }
+
+    function openWish(index) {
+        if (index >= 0 && index < wishesCollection.length) {
+            const selectedWish = wishesCollection[index];
+            const wishHtml = `
+                <i>🦋✨ ${selectedWish.title} ✨🦋</i><br><br>
+                ${selectedWish.message}
+            `;
+            dynamicMsgDiv.innerHTML = wishHtml;
+            wishCardDiv.classList.remove('active-glow');
+            void wishCardDiv.offsetWidth;
+            wishCardDiv.classList.add('active-glow');
+            launchPinkConfetti();
+
+            const butterflyIcon = document.querySelector('.butterfly-icon-small');
+            if (butterflyIcon) {
+                butterflyIcon.style.transform = 'scale(1.2)';
+                setTimeout(() => butterflyIcon.style.transform = 'scale(1)', 250);
+            }
+        }
+    }
+
+    allButtons.forEach((btn, idx) => {
+        if (btn.getAttribute('data-wish-idx') === null) {
+            btn.setAttribute('data-wish-idx', idx);
+        }
+        const wishIdx = parseInt(btn.getAttribute('data-wish-idx'));
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openWish(wishIdx);
+        });
+    });
+
+    // Generate floating butterflies
+    function generateButterflies() {
+        const container = document.getElementById('butterflyBg');
+        if (!container) return;
+        container.innerHTML = '';
+        const count = window.innerWidth < 700 ? 14 : 22;
+        for (let i = 0; i < count; i++) {
+            const butterfly = document.createElement('div');
+            butterfly.classList.add('floating-butterfly');
+            const variants = ['🦋', '🦋✨', '🦋🌸', '🦋🎀', '🦋💗'];
+            butterfly.innerText = variants[Math.floor(Math.random() * variants.length)];
+            butterfly.style.fontSize = `${Math.random() * 1.2 + 1.0}rem`;
+            butterfly.style.left = `${Math.random() * 100}%`;
+            butterfly.style.top = `${Math.random() * 100}%`;
+            butterfly.style.animationDuration = `${Math.random() * 15 + 12}s`;
+            butterfly.style.animationDelay = `${Math.random() * 8}s`;
+            butterfly.style.opacity = Math.random() * 0.5 + 0.3;
+            container.appendChild(butterfly);
+        }
+    }
+
+    window.addEventListener('resize', () => generateButterflies());
+
+    window.addEventListener('load', () => {
+        generateButterflies();
+        // welcome message that reflects calm, smile, uniqueness
+        dynamicMsgDiv.innerHTML = `💕🦋 Hello, one-in-a-million Tiwaloluwa! 🦋💕<br><br>
+        Your calm energy, your beautiful smile, and the way you strive for perfection make you extraordinary.<br>
+        ✨ Every button above holds a wish just for you — including the truth that you are good, just as you are. ✨`;
+        wishCardDiv.classList.add('active-glow');
+        setTimeout(() => wishCardDiv.classList.remove('active-glow'), 700);
+        canvasConfetti({
+            particleCount: 40,
+            spread: 45,
+            origin: { y: 0.8 },
+            colors: ['#ffb5c9', '#ffd0dc']
+        });
+    });
+</script>
+</body>
+</html>
